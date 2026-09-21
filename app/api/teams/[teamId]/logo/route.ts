@@ -6,14 +6,14 @@ import { getTeamById } from "@/lib/data";
 const LOGOS_DIR = path.join(process.cwd(), "public", "logos");
 
 /**
- * GET /api/teams/:teamId/logo
+ * GET /api/teams/:teamId/logo?variant=alt
  *
- * Serves the SVG crest for a known team id. The id is validated against
- * the team list before it ever touches the filesystem, so this only ever
- * reads a file from within LOGOS_DIR.
+ * Serves the SVG crest for a known team id. Pass ?variant= to load an
+ * alternate crest file (e.g. a dark-mode or throwback variant) if one
+ * has been dropped into the logos folder.
  */
 export async function GET(
-  _request: NextRequest,
+  request: NextRequest,
   { params }: { params: Promise<{ teamId: string }> },
 ) {
   const { teamId } = await params;
@@ -23,7 +23,11 @@ export async function GET(
     return NextResponse.json({ error: "Unknown team id" }, { status: 404 });
   }
 
-  const filePath = path.join(LOGOS_DIR, `${team.id}.svg`);
+  const { searchParams } = new URL(request.url);
+  const variant = searchParams.get("variant");
+  const fileName = variant ? `${team.id}-${variant}.svg` : `${team.id}.svg`;
+
+  const filePath = path.join(LOGOS_DIR, fileName);
   const svg = await fs.readFile(filePath, "utf-8");
 
   return new NextResponse(svg, {
