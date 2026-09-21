@@ -61,7 +61,7 @@ export function computeStandings(): StandingsRow[] {
       : "-";
   }
 
-  return rows.sort((a, b) => b.winPct - a.winPct || b.pointDiff - a.pointDiff);
+  return rows.sort((a, b) => b.winPct - a.winPct || a.pointDiff - b.pointDiff);
 }
 
 function gamesForTeam(teamId: string): Game[] {
