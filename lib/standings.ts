@@ -56,7 +56,9 @@ export function computeStandings(): StandingsRow[] {
     const totalGames = row.wins + row.losses;
     row.winPct = totalGames > 0 ? row.wins / totalGames : 0;
     row.pointDiff = row.pointsFor - row.pointsAgainst;
-    row.streak = currentStreakType ? `${currentStreakType}${currentStreakLength}` : "-";
+    row.streak = currentStreakType
+      ? `${currentStreakType}${currentStreakLength}`
+      : "-";
   }
 
   return rows.sort((a, b) => b.winPct - a.winPct || b.pointDiff - a.pointDiff);

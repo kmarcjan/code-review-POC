@@ -67,12 +67,12 @@ edit them and see how the review changes.
 Each branch is one PR to open against `main`, to see what each tool
 catches:
 
-| Branch | Type of issue | What it tests |
-| --- | --- | --- |
-| `bug/standings-tiebreak` | subtle logic bug in the standings calculation | whether the tool understands the *meaning* of the numbers, not just the syntax |
-| `bug/logo-path-traversal` | security vulnerability (path traversal) in an API route | whether the tool catches a real security hole |
-| `bug/cross-file-break` | a change in `lib/` that breaks another file the diff doesn't touch | whether the tool understands the whole repo's context, not just the diff |
-| `nit/formatting-only` | a purely stylistic change, no logic change | how much noise (nitpicking) the tool generates on a harmless change |
+| Branch                    | Type of issue                                                      | What it tests                                                                  |
+| ------------------------- | ------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `bug/standings-tiebreak`  | subtle logic bug in the standings calculation                      | whether the tool understands the _meaning_ of the numbers, not just the syntax |
+| `bug/logo-path-traversal` | security vulnerability (path traversal) in an API route            | whether the tool catches a real security hole                                  |
+| `bug/cross-file-break`    | a change in `lib/` that breaks another file the diff doesn't touch | whether the tool understands the whole repo's context, not just the diff       |
+| `nit/formatting-only`     | a purely stylistic change, no logic change                         | how much noise (nitpicking) the tool generates on a harmless change            |
 
 Suggested workshop flow:
 

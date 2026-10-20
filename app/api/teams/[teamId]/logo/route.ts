@@ -14,7 +14,7 @@ const LOGOS_DIR = path.join(process.cwd(), "public", "logos");
  */
 export async function GET(
   _request: NextRequest,
-  { params }: { params: Promise<{ teamId: string }> }
+  { params }: { params: Promise<{ teamId: string }> },
 ) {
   const { teamId } = await params;
   const team = getTeamById(teamId);

@@ -26,7 +26,7 @@ export async function GET(request: NextRequest) {
 
   if (search) {
     result = result.filter((player) =>
-      player.name.toLowerCase().includes(search)
+      player.name.toLowerCase().includes(search),
     );
   }
 

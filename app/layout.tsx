@@ -3,7 +3,8 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "NBA Review PoC",
-  description: "Demo project for comparing AI code review tools on pull requests",
+  description:
+    "Demo project for comparing AI code review tools on pull requests",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
