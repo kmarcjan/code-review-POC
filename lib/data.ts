@@ -318,8 +318,12 @@ export const games: Game[] = [
   },
 ];
 
-export function getTeamById(teamId: string): Team | undefined {
-  return teams.find((team) => team.id === teamId);
+export function getTeamById(teamId: string): Team {
+  const team = teams.find((t) => t.id === teamId);
+  if (!team) {
+    throw new Error(`Unknown team id: ${teamId}`);
+  }
+  return team;
 }
 
 export function getPlayersByTeam(teamId: string): Player[] {
